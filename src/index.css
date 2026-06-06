@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* ───────── PRINT ───────── */
+@media print {
+  body { background: white !important; }
+  .print\:hidden { display: none !important; }
+  .print\:px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+  main { max-width: 100% !important; padding-bottom: 0 !important; }
+}
+
+/* ───────── NUMBER INPUT SPINNERS OFF ───────── */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ───────── TOAST SLIDE-IN ───────── */
+@keyframes slide-in {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+.animate-slide-in { animation: slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+/* ───────── MOBILE-FRIENDLY ───────── */
+html { scroll-behavior: smooth; }
+
+/* Bigger tap targets on touch devices */
+@media (pointer: coarse) {
+  button, select, input, label { min-height: 38px; }
+  input, select { font-size: 16px !important; } /* prevents iOS auto-zoom */
+}
+
+/* Nicer thin scrollbars for the tab strip */
+nav::-webkit-scrollbar { height: 0; }
+nav { scrollbar-width: none; }
+
+/* Smooth tab fade transition */
+main > div { animation: fade-up 0.25s ease; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Prevent layout shift behind the fixed bottom bar on mobile */
+@media (max-width: 640px) {
+  main { padding-bottom: 7rem !important; }
+}
